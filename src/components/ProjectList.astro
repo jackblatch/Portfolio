@@ -1,0 +1,30 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import Subheading from "./Subheading.astro";
+
+const projects = await fetch("https://api.github.com/users/jackb14/repos", {
+  headers: {
+    authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+  },
+})
+  .then((res) => res.json())
+  .catch(() => []);
+---
+
+<section>
+  <Subheading text="Projects" />
+  <h3 class="text-lg">Open Source Projects</h3>
+  <div class="grid grid-cols-2">
+    {
+      projects.map((project: any) => (
+        <ProjectCard
+          githubLink={project["html_url"]}
+          deployedLink={project["homepage"]}
+          title={project.name}
+          body={project.description}
+        />
+      ))
+    }
+  </div>
+  <h3 class="text-lg">Other Projects</h3>
+</section>

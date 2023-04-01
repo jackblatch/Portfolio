@@ -1,0 +1,40 @@
+---
+import ArrowTopRightOnSquareIcon from "./ArrowTopRightOnSquareIcon.astro";
+import CardWrapper from "./CardWrapper.astro";
+
+export interface Props {
+  title: string;
+  body: string;
+  githubLink: string;
+  deployedLink: string;
+}
+
+const { githubLink, deployedLink, title, body } = Astro.props;
+---
+
+<CardWrapper>
+  <h4 class="font-medium">
+    {title}
+  </h4>
+  <p>
+    {body}
+  </p>
+  <div class="mt-4 flex items-center justify-start gap-4">
+    <a
+      class="flex items-center justify-center"
+      href={githubLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      ><p class="mr-1 hover:font-medium">GitHub</p>
+      <ArrowTopRightOnSquareIcon />
+    </a>
+    <a
+      class="flex items-center justify-center"
+      href={deployedLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      ><p class="mr-1 hover:font-medium">Visit</p>
+      <ArrowTopRightOnSquareIcon /></a
+    >
+  </div>
+</CardWrapper>

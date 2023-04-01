@@ -1,0 +1,9 @@
+---
+import Subheading from "../../components/Subheading.astro";
+
+const { name } = Astro.params;
+
+const formatedName = name ? String(name) : "there";
+---
+
+<Subheading text={`Hi ${formatedName}!`} />
