@@ -1,5 +1,6 @@
 ---
 import Button from "../../components/Button.astro";
+import CardWrapper from "../../components/CardWrapper.astro";
 import Heading from "../../components/Heading.astro";
 import Subheading from "../../components/Subheading.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -12,7 +13,9 @@ const { name } = Astro.params;
 ---
 
 <Layout title={`${name} | Jack - Software Developer`}>
-  <Heading text={`Hi ${name}!`} />
-  <h2 class="text-2xl font-medium mt-2 mb-6">Thanks for stopping by.</h2>
-  <Button text="Go to portfolio" link="/" />
+  <CardWrapper>
+    <Heading text={`Hi ${name}!`} />
+    <h2 class="text-2xl font-medium mt-2 mb-6">Thanks for stopping by.</h2>
+    <Button text="Go to portfolio" link="/" />
+  </CardWrapper>
 </Layout>
