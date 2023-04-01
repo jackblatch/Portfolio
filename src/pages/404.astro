@@ -1,0 +1,14 @@
+---
+import Button from "../components/Button.astro";
+import Heading from "../components/Heading.astro";
+import Subheading from "../components/Subheading.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 Not Found">
+  <Heading text="404" />
+  <div class="mt-2 mb-6">
+    <Subheading text="Sorry, this page can't be found." />
+  </div>
+  <Button text="Go home" link="/" />
+</Layout>

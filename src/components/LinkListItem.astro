@@ -1,15 +1,16 @@
 ---
 export interface Props {
   name: string;
-  link: string;
+  displayLink: string;
+  href: string;
 }
 
-const { name, link } = Astro.props;
+const { name, displayLink, href } = Astro.props;
 ---
 
 <li>
   <span class="font-medium">{name}:</span>
-  <a href={link} target="_blank" rel="noopener noreferrer" class="underline"
-    >{link}</a
+  <a href={href} target="_blank" rel="noopener noreferrer" class="underline"
+    >{displayLink}</a
   >
 </li>
