@@ -1,0 +1,13 @@
+---
+import LinkListItem from "./LinkListItem.astro";
+import Subheading from "./Subheading.astro";
+---
+
+<div>
+  <Subheading text="Links" />
+  <ul class="flex flex-col gap-2">
+    <li><span class="font-medium">Email:</span> 'hello' at this domain</li>
+    <LinkListItem link="github.com/jackb14/" name="GitHub" />
+    <LinkListItem link="linkedin.com/in/jackb14/" name="LinkedIn" />
+  </ul>
+</div>

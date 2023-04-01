@@ -1,0 +1,19 @@
+---
+import ArrowTopRightOnSquareIcon from "./ArrowTopRightOnSquareIcon.astro";
+
+export interface Props {
+  link: string;
+  text: string;
+}
+
+const { link, text } = Astro.props;
+---
+
+<a
+  class="flex items-center justify-center"
+  href={link}
+  target="_blank"
+  rel="noopener noreferrer"
+  ><p class="mr-1 hover:underline">{text}</p>
+  <ArrowTopRightOnSquareIcon /></a
+>

@@ -1,23 +1,40 @@
 ---
 import BlogList from "../components/BlogList.astro";
+import Heading from "../components/Heading.astro";
+import LinksList from "../components/LinksList.astro";
 import ProjectList from "../components/ProjectList.astro";
 import SectionBreak from "../components/SectionBreak.astro";
 import Layout from "../layouts/Layout.astro";
+
+const repos = await fetch("https://api.github.com/users/jackb14/repos", {
+  headers: {
+    authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+  },
+})
+  .then((res) => res.json())
+  .catch(() => []);
 ---
 
 <Layout title="Jack - Software Developer">
-  <main>
-    <h2 class="text-3xl font-medium">I'm Jack, a Software Developer.</h2>
-    <p class="mt-2">
-      I'm a passionate developer, with a keen eye for detail, who enjoys
-      learning new technologies and building applications. I thrive in working
-      in fast-paced environments, solving challenging problems and building high
-      quality user experiences.
-    </p>
-  </main>
-  <SectionBreak />
-  <div class="flex flex-col gap-6">
-    <BlogList />
-    <ProjectList />
+  <div class="animate-fade-in">
+    <main
+      class="flex flex-col md:flex-row items-start md:items-center justify-center gap-8"
+    >
+      <img src={repos[0].owner["avatar_url"]} class="rounded-full h-24" />
+      <div>
+        <Heading text="I'm Jack, a Software Developer." />
+        <p class="mt-2">
+          I have a passion for learning new technologies and building
+          applications. I thrive working in fast-paced environments, solving
+          challenging problems and building high quality user experiences.
+        </p>
+      </div>
+    </main>
+    <SectionBreak />
+    <div class="flex flex-col gap-10 mt-10">
+      <BlogList />
+      <ProjectList projects={repos} />
+      <LinksList />
+    </div>
   </div>
 </Layout>

@@ -1,9 +1,18 @@
 ---
+import Button from "../../components/Button.astro";
+import Heading from "../../components/Heading.astro";
 import Subheading from "../../components/Subheading.astro";
+import Layout from "../../layouts/Layout.astro";
+
+export interface Props {
+  name: string;
+}
 
 const { name } = Astro.params;
-
-const formatedName = name ? String(name) : "there";
 ---
 
-<Subheading text={`Hi ${formatedName}!`} />
+<Layout title={`${name} | Jack - Software Developer`}>
+  <Heading text={`Hi ${name}!`} />
+  <h2 class="text-2xl font-medium mt-2 mb-6">Thanks for stopping by.</h2>
+  <Button text="Go to portfolio" link="/" />
+</Layout>
