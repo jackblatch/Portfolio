@@ -1,7 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import CardWrapper from "./CardWrapper.astro";
 import Subheading from "./Subheading.astro";
-const allPosts = await Astro.glob("../pages/blog/*.md");
+
+const allPosts = await getCollection("blog");
 ---
 
 <section>
@@ -10,15 +12,15 @@ const allPosts = await Astro.glob("../pages/blog/*.md");
     {
       allPosts.map((post) => (
         <CardWrapper>
-          <a href={post.url}>
+          <a href={`/blog/${post.slug}`}>
             <article class="flex flex-col gap-4">
               <div>
                 <h4 class="text-lg font-medium line-clamp-1">
-                  {post.frontmatter.title}
+                  {post.data.title}
                 </h4>
-                <p class="line-clamp-2">{post.frontmatter.description}</p>
+                <p class="line-clamp-2">{post.data.description}</p>
               </div>
-              <p class="text-sm">{post.frontmatter.createdAt}</p>
+              <p class="text-sm">{post.data.createdAt}</p>
             </article>
           </a>
         </CardWrapper>
