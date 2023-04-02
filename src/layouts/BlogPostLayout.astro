@@ -9,8 +9,8 @@ import Layout from "./Layout.astro";
 const { entry } = Astro.props;
 ---
 
-<div class="prose m-auto">
-  <Layout title={entry.data.title}>
+<Layout title={entry.data.title}>
+  <div class="prose m-auto">
     <a class="flex gap-2 no-underline mb-6" href="/">
       <span class="mt-[6px]"><ArrowSmallLeftIcon /></span>
       <span class="hover:underline">Go back</span>
@@ -45,5 +45,5 @@ const { entry } = Astro.props;
         ></a
       >
     </div>
-  </Layout>
-</div>
+  </div>
+</Layout>
