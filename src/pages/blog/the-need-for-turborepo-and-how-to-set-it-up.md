@@ -88,4 +88,4 @@ Example of adding a shared component library in `package.json` dependencies:
 
 ## Useful resources
 
-- [Turborepo Docs](https://turbo.build/docs/introduction)
+- [Turborepo Docs](https://turbo.build/docs)
