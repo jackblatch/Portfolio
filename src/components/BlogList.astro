@@ -6,7 +6,7 @@ const allPosts = await Astro.glob("../pages/blog/*.md");
 
 <section>
   <Subheading text="Blog" />
-  <ul class="list-none grid grid-cols-2 gap-4 mt-3">
+  <ul class="list-none md:grid md:grid-cols-2 gap-4 flex flex-col mt-3">
     {
       allPosts.map((post) => (
         <CardWrapper>

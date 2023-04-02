@@ -6,15 +6,11 @@ import PersonalBio from "../components/PersonalBio.astro";
 import SectionBreak from "../components/SectionBreak.astro";
 import Layout from "./Layout.astro";
 
-export interface Props {
-  title: string;
-}
-
-const { title, frontmatter } = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
 <div class="prose m-auto">
-  <Layout title={title}>
+  <Layout title={frontmatter.title}>
     <a class="flex gap-2 no-underline mb-6" href="/">
       <span class="mt-[6px]"><ArrowSmallLeftIcon /></span>
       <span class="hover:underline">Go back</span>
@@ -34,7 +30,7 @@ const { title, frontmatter } = Astro.props;
     <slot />
     <div class="my-12"><SectionBreak /></div>
     <PersonalBio />
-    <div class="grid grid-cols-2 gap-4 mb-12">
+    <div class="md:grid md:grid-cols-2 gap-4 flex flex-col mb-12">
       <BlogPostFooterCard text="See other blog posts" href="/" />
       <BlogPostFooterCard text="Check out what I'm building" href="/" />
     </div>
