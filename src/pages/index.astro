@@ -6,7 +6,7 @@ import ProjectList from "../components/ProjectList.astro";
 import SectionBreak from "../components/SectionBreak.astro";
 import Layout from "../layouts/Layout.astro";
 
-const repos = await fetch("https://api.github.com/users/jackb14/repos", {
+const repos = await fetch("https://api.github.com/users/jackblatch/repos", {
   headers: {
     authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
   },
