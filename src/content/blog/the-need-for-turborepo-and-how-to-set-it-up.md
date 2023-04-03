@@ -2,7 +2,6 @@
 title: The need for Turborepo and how to set it up
 description: Turborepo can be an incredibly useful tool when needing to manage multiple projects in a single repository. This article will walk through my experience of when I needed a monorepo solution and the benefits it provided.
 createdAt: April 2, 2023
-author: Jack
 ---
 
 ## The Problem

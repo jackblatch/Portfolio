@@ -1,0 +1,20 @@
+---
+import BlogList from "../components/BlogList.astro";
+import ContactMe from "../components/ContactMe.astro";
+import Heading from "../components/Heading.astro";
+import NavBar from "../components/NavBar.astro";
+import ProjectList from "../components/ProjectList.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Projects">
+  <NavBar />
+  <div class="my-12">
+    <Heading text="Projects I've been working on" />
+    <p class="prose mb-6 mt-2">
+      Here are some of the most recent apps I've been building.
+    </p>
+    <ProjectList />
+  </div>
+  <ContactMe />
+</Layout>

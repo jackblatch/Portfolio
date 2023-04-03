@@ -1,0 +1,17 @@
+---
+import BlogList from "../../components/BlogList.astro";
+import ContactMe from "../../components/ContactMe.astro";
+import Heading from "../../components/Heading.astro";
+import NavBar from "../../components/NavBar.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Blog">
+  <NavBar />
+  <div class="my-12">
+    <Heading text="Blog posts" />
+    <p class="prose mt-2 mb-6">My writing on all things software.</p>
+    <BlogList />
+  </div>
+  <ContactMe />
+</Layout>

@@ -1,17 +1,16 @@
 ---
 import ProjectCard from "./ProjectCard.astro";
-import Subheading from "./Subheading.astro";
 
-export interface Props {
-  projects: string[];
-}
-
-const { projects } = Astro.props;
+const projects = await fetch("https://api.github.com/users/jackblatch/repos", {
+  headers: {
+    authorization: `token ${import.meta.env.GITHUB_TOKEN}`,
+  },
+})
+  .then((res) => res.json())
+  .catch(() => []);
 ---
 
 <section>
-  <Subheading text="Projects" />
-  <h3 class="text-lg mb-4">Open Source Projects</h3>
   <ul class="md:grid md:grid-cols-2 gap-4 flex flex-col">
     {
       projects.map((project: any) => (
@@ -24,5 +23,4 @@ const { projects } = Astro.props;
       ))
     }
   </ul>
-  <!-- <h3 class="text-lg mt-8 mb-4">Other Projects</h3> -->
 </section>
