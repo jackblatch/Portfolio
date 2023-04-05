@@ -7,6 +7,7 @@ const projects = await fetch("https://api.github.com/users/jackblatch/repos", {
   },
 })
   .then((res) => res.json())
+  .then((json) => json.filter((project: any) => !project["fork"]))
   .catch(() => []);
 ---
 
