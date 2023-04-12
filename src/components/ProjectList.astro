@@ -10,8 +10,9 @@ const projects = await fetch("https://api.github.com/users/jackblatch/repos", {
   .then((json) =>
     json.filter(
       (project: any) =>
-        !project["fork"] ||
-        (project["fork"] && project["homepage"].includes("seperi"))
+        (!project["fork"] && project["homepage"]) ||
+        (project["fork"] && project["homepage"].includes("seperi")) ||
+        project["homepage"].includes("jackblatch")
     )
   )
   .catch(() => []);
