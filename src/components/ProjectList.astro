@@ -8,12 +8,10 @@ const projects = await fetch("https://api.github.com/users/jackblatch/repos", {
 })
   .then((res) => res.json())
   .then((json) =>
-    json.filter(
-      (project: any) =>
-        (!project["fork"] && project["homepage"]) ||
-        (project["fork"] && project["homepage"].includes("seperi")) ||
-        project["homepage"].includes("jackblatch")
-    )
+    json.filter((project: { homepage: unknown }) => {
+      const homepage = String(project["homepage"]);
+      return homepage.includes("seperi") || homepage.includes("jackblatch");
+    })
   )
   .catch(() => []);
 ---
