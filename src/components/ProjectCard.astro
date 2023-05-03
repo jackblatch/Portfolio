@@ -24,7 +24,9 @@ const { githubLink, deployedLink, title, body, starCount } = Astro.props;
         {body}
       </p>
     </div>
-    <div class="mt-4 flex items-center justify-between">
+    <div
+      class="flex-col sm:flex-row gap-2 mt-4 flex items-start sm:items-center justify-center sm:justify-between"
+    >
       <div class="flex items-center justify-start gap-4">
         <ProjectCardLink link={githubLink} text="GitHub" />
         <ProjectCardLink link={deployedLink} text="Visit" />
