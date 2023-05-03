@@ -8,10 +8,12 @@ const projects = await fetch("https://api.github.com/users/jackblatch/repos", {
 })
   .then((res) => res.json())
   .then((json) =>
-    json.filter((project: { homepage: unknown }) => {
-      const homepage = String(project["homepage"]);
-      return homepage.includes("seperi") || homepage.includes("jackblatch");
-    })
+    json
+      .filter((project: { homepage: unknown }) => {
+        const homepage = String(project["homepage"]);
+        return homepage.includes("seperi") || homepage.includes("jackblatch");
+      })
+      .sort((a: any, b: any) => b["stargazers_count"] - a["stargazers_count"])
   )
   .catch(() => []);
 ---
@@ -25,6 +27,7 @@ const projects = await fetch("https://api.github.com/users/jackblatch/repos", {
           deployedLink={project["homepage"]}
           title={project.name}
           body={project.description}
+          starCount={project["stargazers_count"]}
         />
       ))
     }

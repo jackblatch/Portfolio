@@ -1,15 +1,17 @@
 ---
 import CardWrapper from "./CardWrapper.astro";
 import ProjectCardLink from "./ProjectCardLink.astro";
+import StarIcon from "./StarIcon.astro";
 
 export interface Props {
   title: string;
   body: string;
   githubLink: string;
   deployedLink: string;
+  starCount: string;
 }
 
-const { githubLink, deployedLink, title, body } = Astro.props;
+const { githubLink, deployedLink, title, body, starCount } = Astro.props;
 ---
 
 <CardWrapper>
@@ -22,9 +24,15 @@ const { githubLink, deployedLink, title, body } = Astro.props;
         {body}
       </p>
     </div>
-    <div class="mt-4 flex items-center justify-start gap-4">
-      <ProjectCardLink link={githubLink} text="GitHub" />
-      <ProjectCardLink link={deployedLink} text="Visit" />
+    <div class="mt-4 flex items-center justify-between">
+      <div class="flex items-center justify-start gap-4">
+        <ProjectCardLink link={githubLink} text="GitHub" />
+        <ProjectCardLink link={deployedLink} text="Visit" />
+      </div>
+      <div class="flex items-center justify-end gap-1">
+        <p class="mt-[1.5px]">{starCount}</p>
+        <StarIcon />
+      </div>
     </div>
   </div>
 </CardWrapper>
