@@ -5,6 +5,8 @@ import PersonalBio from "../components/PersonalBio.astro";
 import ProjectList from "../components/ProjectList.astro";
 import SectionBreak from "../components/SectionBreak.astro";
 import Subheading from "../components/Subheading.astro";
+import GithubIcon from "../components/icons/GithubIcon.astro";
+import TwitterIcon from "../components/icons/TwitterIcon.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -20,6 +22,26 @@ import Layout from "../layouts/Layout.astro";
         </div>
         <div class="col-span-5">
           <PersonalBio />
+          <div class="mt-2 flex items-center justify-start gap-2">
+            <a
+              href="https://github.com/jackblatch"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="rounded-md hover:bg-gray-100 p-2">
+                <GithubIcon />
+              </div>
+            </a>
+            <a
+              href="https://twitter.com/jackblatch_"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="rounded-md hover:bg-gray-100 p-2">
+                <TwitterIcon />
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </main>
