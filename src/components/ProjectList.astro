@@ -11,7 +11,11 @@ const projects = await fetch("https://api.github.com/users/jackblatch/repos", {
     json
       .filter((project: { homepage: unknown }) => {
         const homepage = String(project["homepage"]);
-        return homepage.includes("seperi") || homepage.includes("jackblatch");
+        return (
+          homepage.includes("seperi") ||
+          homepage.includes("jackblatch") ||
+          homepage.includes("npmjs.com/package")
+        );
       })
       .sort((a: any, b: any) => b["stargazers_count"] - a["stargazers_count"])
   )
