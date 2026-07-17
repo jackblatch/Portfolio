@@ -1,7 +1,4 @@
 ---
-import ArrowSmallRightIcon from "./ArrowSmallRightIcon.astro";
-import CardWrapper from "./CardWrapper.astro";
-
 export interface Props {
   href: string;
   text: string;
@@ -10,13 +7,9 @@ export interface Props {
 const { text, href } = Astro.props;
 ---
 
-<a href={href} class="no-underline group"
-  ><CardWrapper>
-    <div class="flex gap-2 group-hover:text-blue-700">
-      {text}
-      <span class="mt-[3px] hidden group-hover:inline group-hover:animate-pulse"
-        ><ArrowSmallRightIcon /></span
-      >
-    </div>
-  </CardWrapper></a
+<a
+  href={href}
+  class="no-underline text-sm text-ink-muted dark:text-night-muted hover:text-ink-fg dark:hover:text-night-fg transition-colors"
 >
+  &larr; {text}
+</a>

@@ -10,10 +10,10 @@ const { link, text } = Astro.props;
 ---
 
 <a
-  class="flex items-center justify-center"
+  class="flex items-center gap-1 text-xs text-ink-muted dark:text-night-muted hover:text-ink-fg dark:hover:text-night-fg transition-colors"
   href={link}
   target="_blank"
   rel="noopener noreferrer"
-  ><p class="mr-1 hover:underline">{text}</p>
+  >{text}
   <ArrowTopRightOnSquareIcon /></a
 >
