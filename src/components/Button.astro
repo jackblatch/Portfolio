@@ -7,8 +7,9 @@ export interface Props {
 const { text, link } = Astro.props;
 ---
 
-<a href={link}>
-  <button class="bg-gray-800 text-white rounded-md py-2 px-6">
-    {text}
-  </button>
+<a
+  href={link}
+  class="inline-block text-sm border border-ink-line dark:border-night-line px-4 py-2 rounded hover:border-ink-fg dark:hover:border-night-fg transition-colors"
+>
+  {text}
 </a>

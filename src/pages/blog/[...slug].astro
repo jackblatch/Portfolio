@@ -13,9 +13,9 @@ if (entry === undefined) {
   return Astro.redirect("/404");
 }
 
-const { Content } = await entry.render();
+const { Content, headings } = await entry.render();
 ---
 
-<BlogPostLayout entry={entry}>
+<BlogPostLayout entry={entry} headings={headings}>
   <Content />
 </BlogPostLayout>

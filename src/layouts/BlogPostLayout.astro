@@ -1,43 +1,46 @@
 ---
-import ArrowSmallLeftIcon from "../components/ArrowSmallLeftIcon.astro";
 import ArrowTopRightOnSquareIcon from "../components/ArrowTopRightOnSquareIcon.astro";
 import BlogPostFooterCard from "../components/BlogPostFooterCard.astro";
 import ContactMe from "../components/ContactMe.astro";
 import NavBar from "../components/NavBar.astro";
 import PersonalBio from "../components/PersonalBio.astro";
 import SectionBreak from "../components/SectionBreak.astro";
+import TableOfContents from "../components/TableOfContents.astro";
 import Layout from "./Layout.astro";
 
-const { entry } = Astro.props;
+const { entry, headings = [] } = Astro.props;
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={`@jackblatch | ${entry.data.title}`}>
   <NavBar />
-  <div class="prose m-auto">
-    <a class="flex gap-2 no-underline mb-6" href="/">
-      <span class="mt-[6px]"><ArrowSmallLeftIcon /></span>
-      <span class="hover:underline">Go home</span>
-    </a>
-    <h1>{entry.data.title}</h1>
-    <p class="text-sm m-0">{entry.data.createdAt}</p>
-    <p>{entry.data.description}</p>
-    <slot />
-    <div class="my-12"><SectionBreak /></div>
-    <PersonalBio />
+  <article>
+    <h1 class="text-base font-medium tracking-tight">{entry.data.title}</h1>
+    <p class="mt-2 text-xs text-ink-muted dark:text-night-muted tabular-nums">
+      {entry.data.createdAt}
+    </p>
+    <p class="mt-4 text-sm text-ink-muted dark:text-night-muted">
+      {entry.data.description}
+    </p>
+    <TableOfContents headings={headings} />
+    <div class="prose dark:prose-invert mt-8">
+      <slot />
+    </div>
+  </article>
+  <SectionBreak />
+  <PersonalBio />
+  <div class="mt-6">
     <ContactMe />
-    <div class="md:grid md:grid-cols-2 gap-4 flex flex-col mb-12">
-      <BlogPostFooterCard text="See other blog posts" href="/blog" />
-    </div>
-    <div class="flex items-center justify-end">
-      <a
-        href={`https://github.com/jackblatch/Portfolio/tree/main/src/content/blog/${entry.id}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex gap-2 text-gray-500 hover:text-gray-700"
-        >Edit on GitHub <span class="mt-[5px]"
-          ><ArrowTopRightOnSquareIcon /></span
-        ></a
-      >
-    </div>
+  </div>
+  <div
+    class="mt-10 pt-6 border-t border-ink-line dark:border-night-line flex items-center justify-between text-sm"
+  >
+    <BlogPostFooterCard text="Go home" href="/" />
+    <a
+      href={`https://github.com/jackblatch/Portfolio/tree/main/src/content/blog/${entry.id}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center gap-2 text-ink-muted dark:text-night-muted hover:text-accent transition-colors"
+      >Edit on GitHub <ArrowTopRightOnSquareIcon /></a
+    >
   </div>
 </Layout>

@@ -17,10 +17,10 @@ const { githubLink, deployedLink, title, body, starCount } = Astro.props;
 <CardWrapper>
   <div class="flex flex-col justify-between h-full">
     <div>
-      <h4 class="text-lg font-medium">
+      <h4 class="text-sm font-medium">
         {title}
       </h4>
-      <p class="line-clamp-2">
+      <p class="mt-2 text-sm text-ink-muted dark:text-night-muted line-clamp-2">
         {body}
       </p>
     </div>
@@ -31,8 +31,10 @@ const { githubLink, deployedLink, title, body, starCount } = Astro.props;
         <ProjectCardLink link={githubLink} text="GitHub" />
         <ProjectCardLink link={deployedLink} text="Visit" />
       </div>
-      <div class="flex items-center justify-end gap-1">
-        <p class="mt-[1.5px]">{starCount}</p>
+      <div
+        class="flex items-center gap-1 text-xs text-ink-muted dark:text-night-muted tabular-nums"
+      >
+        {starCount}
         <StarIcon />
       </div>
     </div>

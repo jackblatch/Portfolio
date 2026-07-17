@@ -1,27 +1,35 @@
 ---
 import { getCollection } from "astro:content";
-import CardWrapper from "./CardWrapper.astro";
 
 const allPosts = await getCollection("blog");
 ---
 
 <section>
-  <ul class="list-none md:grid md:grid-cols-2 gap-4 flex flex-col mt-3">
+  <ul class="list-none flex flex-col">
     {
-    allPosts
+      allPosts
         // @ts-ignore
         .sort((a, b) => b.index - a.index)
         .map((post) => (
-          <a href={`/blog/${post.slug}`} class="group">
-            <CardWrapper>
-              <article class="flex flex-col gap-2">
-                <h4 class="text-lg font-medium line-clamp-1 group-hover:text-blue-700">
-                  {post.data.title}
-                </h4>
-                <p class="text-sm">{post.data.createdAt}</p>
-              </article>
-            </CardWrapper>
-          </a>
+          <li class="border-t border-ink-line dark:border-night-line last:border-b">
+            <a
+              href={`/blog/${post.slug}`}
+              class="group relative flex items-baseline justify-between gap-4 py-3 pl-4 text-sm"
+            >
+              <span
+                aria-hidden="true"
+                class="absolute left-0 text-ink-muted dark:text-night-muted group-hover:text-accent dark:group-hover:text-accent transition-colors"
+              >
+                ›
+              </span>
+              <span class="truncate transition group-hover:translate-x-1 group-hover:text-accent group-hover:underline underline-offset-4">
+                {post.data.title}
+              </span>
+              <span class="shrink-0 text-xs text-ink-muted dark:text-night-muted tabular-nums">
+                {post.data.createdAt}
+              </span>
+            </a>
+          </li>
         ))
     }
   </ul>
