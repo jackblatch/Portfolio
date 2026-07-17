@@ -43,17 +43,41 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
+  :root {
+    /* Deeper green holds up on the beige; the neon version blooms on dark. */
+    --accent: #0b7a3b;
+    --on-accent: #f5f1e6;
+  }
+  .dark {
+    --accent: #2fd07e;
+    --on-accent: #020202;
+  }
+
   html {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
       "Liberation Mono", "Courier New", monospace;
     -webkit-text-size-adjust: 100%;
   }
-  ::selection {
-    background: #111;
-    color: #fff;
+
+  /* Tiled SVG noise — grain without an image request. Dark specks sit into
+     the beige; light ones speckle the dark ground. */
+  body {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)' opacity='0.42'/%3E%3C/svg%3E");
+    background-size: 220px 220px;
+    background-repeat: repeat;
+    background-attachment: fixed;
   }
-  .dark ::selection {
-    background: #e6e6e6;
-    color: #0b0b0b;
+
+  .dark body {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.15'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .prose a:hover {
+    color: var(--accent);
   }
 </style>

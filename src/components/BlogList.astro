@@ -16,7 +16,7 @@ const allPosts = await getCollection("blog");
               href={`/blog/${post.slug}`}
               class="group flex items-baseline justify-between gap-4 py-3 text-sm"
             >
-              <span class="truncate group-hover:underline underline-offset-4">
+              <span class="truncate group-hover:text-accent group-hover:underline underline-offset-4 transition-colors">
                 {post.data.title}
               </span>
               <span class="shrink-0 text-xs text-ink-muted dark:text-night-muted tabular-nums">
