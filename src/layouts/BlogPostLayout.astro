@@ -5,12 +5,13 @@ import ContactMe from "../components/ContactMe.astro";
 import NavBar from "../components/NavBar.astro";
 import PersonalBio from "../components/PersonalBio.astro";
 import SectionBreak from "../components/SectionBreak.astro";
+import TableOfContents from "../components/TableOfContents.astro";
 import Layout from "./Layout.astro";
 
-const { entry } = Astro.props;
+const { entry, headings = [] } = Astro.props;
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={`@jackblatch | ${entry.data.title}`}>
   <NavBar />
   <article>
     <h1 class="text-base font-medium tracking-tight">{entry.data.title}</h1>
@@ -20,6 +21,7 @@ const { entry } = Astro.props;
     <p class="mt-4 text-sm text-ink-muted dark:text-night-muted">
       {entry.data.description}
     </p>
+    <TableOfContents headings={headings} />
     <div class="prose dark:prose-invert mt-8">
       <slot />
     </div>
@@ -32,7 +34,7 @@ const { entry } = Astro.props;
   <div
     class="mt-10 pt-6 border-t border-ink-line dark:border-night-line flex items-center justify-between text-sm"
   >
-    <BlogPostFooterCard text="See other blog posts" href="/blog" />
+    <BlogPostFooterCard text="Go home" href="/" />
     <a
       href={`https://github.com/jackblatch/Portfolio/tree/main/src/content/blog/${entry.id}`}
       target="_blank"

@@ -1,13 +1,19 @@
-<button
-  id="theme-toggle"
-  type="button"
-  aria-label="Toggle colour theme"
-  title="Toggle theme — press D for dark, L for light"
-  class="text-xs px-1 text-ink-muted dark:text-night-muted hover:bg-accent hover:text-on-accent dark:hover:text-on-accent transition-colors"
->
-  <span class="hidden dark:inline">[ light ]</span>
-  <span class="dark:hidden">[ dark ]</span>
-</button>
+<div class="flex items-center gap-3">
+  <span
+    class="hidden sm:inline text-xs text-ink-muted dark:text-night-muted select-none"
+    >press D / L</span
+  >
+  <button
+    id="theme-toggle"
+    type="button"
+    aria-label="Toggle colour theme"
+    title="Toggle theme — press D for dark, L for light"
+    class="text-xs px-1 text-ink-muted dark:text-night-muted hover:bg-accent hover:text-on-accent dark:hover:text-on-accent transition-colors"
+  >
+    <span class="hidden dark:inline">[ light ]</span>
+    <span class="dark:hidden">[ dark ]</span>
+  </button>
+</div>
 
 <script is:inline>
   const setTheme = (dark) => {

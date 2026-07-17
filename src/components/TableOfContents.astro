@@ -1,0 +1,48 @@
+---
+export interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+}
+
+const { headings } = Astro.props;
+
+// h2/h3 only — h1 is the post title, h4 is too granular to navigate by.
+const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{
+  items.length > 1 && (
+    <nav
+      aria-label="Table of contents"
+      class="my-8 border-y border-ink-line dark:border-night-line"
+    >
+      <details class="group">
+        <summary class="flex items-center gap-2 py-4 cursor-pointer list-none text-xs uppercase tracking-widest text-ink-muted dark:text-night-muted hover:text-accent dark:hover:text-accent transition-colors [&::-webkit-details-marker]:hidden">
+          <span
+            aria-hidden="true"
+            class="inline-block transition-transform group-open:rotate-90"
+          >
+            ›
+          </span>
+          Contents
+          <span class="normal-case tracking-normal">({items.length})</span>
+        </summary>
+        <ul class="list-none flex flex-col gap-1 text-sm pb-4">
+          {items.map((h) => (
+            <li class={h.depth === 3 ? "pl-4" : undefined}>
+              <a
+                href={`#${h.slug}`}
+                class={`hover:text-accent dark:hover:text-accent hover:underline underline-offset-4 transition-colors ${
+                  h.depth === 3
+                    ? "text-ink-muted dark:text-night-muted"
+                    : "text-ink-fg dark:text-night-fg"
+                }`}
+              >
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    </nav>
+  )
+}
