@@ -14,9 +14,15 @@ const allPosts = await getCollection("blog");
           <li class="border-t border-ink-line dark:border-night-line last:border-b">
             <a
               href={`/blog/${post.slug}`}
-              class="group flex items-baseline justify-between gap-4 py-3 text-sm"
+              class="group relative flex items-baseline justify-between gap-4 py-3 pl-4 text-sm"
             >
-              <span class="truncate group-hover:underline underline-offset-4">
+              <span
+                aria-hidden="true"
+                class="absolute left-0 text-ink-muted dark:text-night-muted group-hover:text-accent dark:group-hover:text-accent transition-colors"
+              >
+                ›
+              </span>
+              <span class="truncate transition group-hover:translate-x-1 group-hover:text-accent group-hover:underline underline-offset-4">
                 {post.data.title}
               </span>
               <span class="shrink-0 text-xs text-ink-muted dark:text-night-muted tabular-nums">

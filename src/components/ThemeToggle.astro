@@ -1,16 +1,43 @@
-<button
-  id="theme-toggle"
-  type="button"
-  aria-label="Toggle colour theme"
-  class="text-xs text-ink-muted dark:text-night-muted hover:text-ink-fg dark:hover:text-night-fg transition-colors"
->
-  <span class="hidden dark:inline">[ light ]</span>
-  <span class="dark:hidden">[ dark ]</span>
-</button>
+<div class="flex items-center gap-3">
+  <span
+    class="hidden sm:inline text-xs text-ink-muted dark:text-night-muted select-none"
+    >press D / L</span
+  >
+  <button
+    id="theme-toggle"
+    type="button"
+    aria-label="Toggle colour theme"
+    title="Toggle theme — press D for dark, L for light"
+    class="text-xs px-1 text-ink-muted dark:text-night-muted hover:bg-accent hover:text-on-accent dark:hover:text-on-accent transition-colors"
+  >
+    <span class="hidden dark:inline">[ light ]</span>
+    <span class="dark:hidden">[ dark ]</span>
+  </button>
+</div>
 
 <script is:inline>
+  const setTheme = (dark) => {
+    document.documentElement.classList.toggle("dark", dark);
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  };
+
   document.getElementById("theme-toggle")?.addEventListener("click", () => {
-    const isDark = document.documentElement.classList.toggle("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+    setTheme(!document.documentElement.classList.contains("dark"));
+  });
+
+  document.addEventListener("keydown", (e) => {
+    // Bare keys, so ignore anything the browser or a text field owns.
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const el = document.activeElement;
+    if (
+      el instanceof HTMLInputElement ||
+      el instanceof HTMLTextAreaElement ||
+      (el instanceof HTMLElement && el.isContentEditable)
+    ) {
+      return;
+    }
+    const key = e.key.toLowerCase();
+    if (key === "d") setTheme(true);
+    else if (key === "l") setTheme(false);
   });
 </script>

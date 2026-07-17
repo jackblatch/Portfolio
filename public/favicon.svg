@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Inset so the tilt has room; the block would clip at full bleed. -->
+  <g transform="rotate(-8 16 16)">
+    <rect x="2" y="5" width="28" height="22" fill="#0b7a3b" />
+  </g>
+</svg>

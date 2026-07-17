@@ -1,19 +1,4 @@
 ---
-import BlogList from "../../components/BlogList.astro";
-import ContactMe from "../../components/ContactMe.astro";
-import Heading from "../../components/Heading.astro";
-import NavBar from "../../components/NavBar.astro";
-import SectionBreak from "../../components/SectionBreak.astro";
-import Layout from "../../layouts/Layout.astro";
+// The listing lives on the home page now; keep the old URL pointing there.
+return Astro.redirect("/");
 ---
-
-<Layout title="Blog">
-  <NavBar />
-  <Heading text="Blog posts" />
-  <p class="mt-3 mb-8 text-sm text-ink-muted dark:text-night-muted">
-    My writing on all things software.
-  </p>
-  <BlogList />
-  <SectionBreak />
-  <ContactMe />
-</Layout>
